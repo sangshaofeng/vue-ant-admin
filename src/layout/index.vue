@@ -1,7 +1,7 @@
 <template>
   <a-layout class="layout-container" style="min-height: 100vh">
     <sidebar></sidebar>
-    <a-layout>
+    <a-layout :style="{ marginLeft: '200px' }">
       <navbar></navbar>
       <app-main></app-main>
     </a-layout>
