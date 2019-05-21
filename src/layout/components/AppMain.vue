@@ -15,5 +15,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+.ant-layout-content {
+  background: transparent !important;
+}
 </style>

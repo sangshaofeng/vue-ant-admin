@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Layout from '@/layout'
 
+import userCenter from "./modules/userCenter"
+
 Vue.use(Router)
 
 export const constantRouterMap = [
@@ -10,6 +12,7 @@ export const constantRouterMap = [
     component: Layout,
     redirect: '/dashboard',
     name: "dashboard",
+    hidden: true,
     children: [
       {
         path: 'dashboard',
@@ -21,6 +24,7 @@ export const constantRouterMap = [
       }
     ]
   },
+  userCenter,
 ]
 
 export default new Router({
