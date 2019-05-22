@@ -35,6 +35,7 @@ export default {
 
 <style lang="less" scoped>
 .right-body {
+  min-width: 990px;
   transition: all .2s;
 }
 .marginLeft200 {
