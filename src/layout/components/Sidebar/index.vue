@@ -7,12 +7,12 @@
       collapsible
       v-model="sidebarCollapsed"
     >
-      <div class="logo">
-        <img src="https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png" alt="">
-        <transition name="fade" mode="out-in">
-          <!-- <h3 v-if="!sidebarCollapsed">管理系统</h3> -->
-        </transition>
-      </div>
+      <transition name="sidebarLogoFade">
+        <div class="logo" v-if="config.showLogo">
+          <img src="https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png" alt="">
+          <h3 v-if="!sidebarCollapsed">管理系统</h3>
+        </div>
+      </transition>
       <a-menu
         :theme="theme"
         mode="inline"
@@ -30,6 +30,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import appConfig from '@/app.config'
 import { constantRouterMap } from '@/router'
 import SidebarItem from './SidebarItem'
 
@@ -41,7 +42,8 @@ export default {
     return {
       collapsed: false,
       routes: [],
-      theme: 'dark'
+      theme: 'dark',
+      config: appConfig
     }
   },
   computed: {
@@ -77,9 +79,9 @@ export default {
   align-items: center;
   h3 {
     color: #fff;
-    margin: 0 10px;
+    margin: 0 14px;
     display: inline-block;
-    font-size: 15px;
+    font-size: 14px;
   }
   img {
     width: 30px;
@@ -113,5 +115,13 @@ export default {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
   background-color: #eee;
+}
+
+.sidebarLogoFade-enter-active {
+  transition: opacity 1.5s;
+}
+.sidebarLogoFade-enter,
+.sidebarLogoFade-leave-to {
+  opacity: 0;
 }
 </style>
