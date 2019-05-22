@@ -13,7 +13,7 @@ const  userCenterRoutes = {
       path: '/basicInfo',
       name: 'BasicInfo',
       component: () => import('@/pages/userCenter/basicInfo'),
-      meta: { title: '基本信息' }
+      meta: { title: '基本信息' },
     },
     {
       path: '/changePassword',

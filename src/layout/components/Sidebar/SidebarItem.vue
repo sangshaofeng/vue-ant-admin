@@ -13,6 +13,7 @@
         <a-menu-item
           v-if="!item.children"
           :key="item.path"
+          @click="toPath(item.path)"
         >
           <a-icon :type="item.meta.icon" />
           <span>{{ item.meta.title }}</span>
@@ -31,16 +32,21 @@
 import { Menu } from 'ant-design-vue';
 export default {
   name: 'SubMenu',
-  isSubMenu: true, 
+  isSubMenu: true,
   props: {
     ...Menu.SubMenu.props,
-    menuInfo: { 
+    menuInfo: {
       type: Object,
       default: ()=>({}),
     },
   },
   mounted() {
     console.log(this.menuInfo)
+  },
+  methods: {
+    toPath(path) {
+      this.$router.push({path: path})
+    }
   }
 };
 </script>

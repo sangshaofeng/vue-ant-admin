@@ -1,19 +1,20 @@
 <template>
     <a-layout-sider
       class="sidebar-wrapper"
+      :class="bindClass"
       :trigger="null"
       :style="{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }"
       collapsible
-      v-model="collapsed"
+      v-model="sidebarCollapsed"
     >
       <div class="logo">
         <img src="https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png" alt="">
         <transition name="fade" mode="out-in">
-          <h3 v-if="!collapsed">管理系统</h3>
+          <!-- <h3 v-if="!sidebarCollapsed">管理系统</h3> -->
         </transition>
       </div>
-      <a-menu 
-        theme="dark" 
+      <a-menu
+        :theme="theme"
         mode="inline"
       >
       <template v-for="route in routes">
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { constantRouterMap } from '@/router'
 import SidebarItem from './SidebarItem'
 
@@ -39,6 +41,17 @@ export default {
     return {
       collapsed: false,
       routes: [],
+      theme: 'dark'
+    }
+  },
+  computed: {
+    ...mapState({
+      sidebarCollapsed: state => state.app.sidebarCollapsed
+    }),
+    bindClass() {
+      return {
+        themeWhite: this.theme === 'white'
+      }
     }
   },
   mounted() {
@@ -55,8 +68,8 @@ export default {
 
 <style lang="less" scoped>
 .logo {
-  height: 64px;
-  background: #222938;
+  height: 50px;
+  background: #001529;
   line-height: 64px;
   display: flex;
   flex-flow: row nowrap;
@@ -69,12 +82,22 @@ export default {
     font-size: 15px;
   }
   img {
-    width: 40px;
+    width: 30px;
   }
 }
 .sidebar-wrapper {
   height: 100%;
   text-align: left;
+}
+.themeWhite {
+  border-right: 1px solid #e8e8e8;
+  background: #fff;
+  .ant-menu {
+    border: none;
+  }
+  .logo {
+    background: #fff;
+  }
 }
 .sidebar-wrapper::-webkit-scrollbar {
   width: 4px;
