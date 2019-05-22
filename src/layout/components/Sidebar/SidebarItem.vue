@@ -3,7 +3,7 @@
     :key="menuInfo.path"
     v-bind="$props"
     v-on="$listeners"
-    v-if="!menuInfo.hidden"
+    v-if="!menuInfo.meta.hidden"
   >
     <span slot="title">
       <a-icon :type="menuInfo.meta.icon" /><span>{{ menuInfo.meta.title }}</span>
@@ -29,7 +29,8 @@
 </template>
 
 <script>
-import { Menu } from 'ant-design-vue';
+import { Menu } from 'ant-design-vue'
+
 export default {
   name: 'SubMenu',
   isSubMenu: true,
@@ -39,9 +40,6 @@ export default {
       type: Object,
       default: ()=>({}),
     },
-  },
-  mounted() {
-    console.log(this.menuInfo)
   },
   methods: {
     toPath(path) {
