@@ -19,10 +19,19 @@ const constantRouterMap = [
         name: "dashboard",
         meta: {
           title: "Dashboard",
-          roles: [""],
+          roles: ["dashboard"],
         }
       }
     ]
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/pages/Login'),
+    meta: {
+      title: '',
+      hidden: true
+    }
   },
   {
     path: '/404',

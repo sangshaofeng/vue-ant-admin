@@ -12,14 +12,20 @@ const  userCenterRoutes = {
     {
       path: '/basicInfo',
       name: 'BasicInfo',
-      component: () => import('@/pages/userCenter/basicInfo'),
-      meta: { title: '基本信息' },
+      component: () => import('@/pages/userCenter/BasicInfo'),
+      meta: { 
+        title: '基本信息',
+        roles: ["user_basic_info"]
+      },
     },
     {
       path: '/changePassword',
       name: 'ChangePassword',
-      component: () => import('@/pages/userCenter/changePassword'),
-      meta: { title: '修改密码' }
+      component: () => import('@/pages/userCenter/ChangePassword'),
+      meta: { 
+        title: '修改密码',
+        roles: ["change_password"]
+      }
     },
   ]
 }

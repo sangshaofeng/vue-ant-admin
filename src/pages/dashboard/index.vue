@@ -1,6 +1,10 @@
 <template>
   <div class="wrapper">
-    <canvas id="myChart" width="400px" height="400px"></canvas>
+    <div class="chart-wrapper">
+      <div class="chart-item">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -52,6 +56,19 @@ export default {
 
 <style lang="less" scoped>
 .wrapper {
-  width: 50%;
+  width: 100%;
+  .chart-wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    .chart-item {
+      width: 25%;
+      padding: 10px;
+      background: #fff;
+      border-radius: 12px;
+    }
+  }
 }
 </style>

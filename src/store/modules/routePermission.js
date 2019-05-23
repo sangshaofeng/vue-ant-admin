@@ -1,4 +1,4 @@
-import constantRouterMap from '@/router'
+import constantRouterMap from '@/router/routes'
 
 /**
  * 路由中的roles是否在user的roles中
@@ -8,9 +8,7 @@ import constantRouterMap from '@/router'
  */
 function hasPermission(roles, route) {
   if (route.meta && route.meta.roles) {
-    return roles.some(role => {
-      return route.meta.roles.include(role)
-    })
+    return roles.some(role => route.meta.roles.includes(role))
   }
   return true
 }
@@ -49,7 +47,7 @@ const routePermission = {
       return new Promise(resolve => {
         let accessedRoutes = filterPermissionRoutes(constantRouterMap, roles)
         commit('SET_ROUTES', accessedRoutes)
-        resolve(accessedRoutes)``
+        resolve(accessedRoutes)
       })
     }
   }

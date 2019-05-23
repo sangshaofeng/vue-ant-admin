@@ -17,7 +17,7 @@
         :theme="theme"
         mode="inline"
       >
-      <template v-for="route in routes">
+      <template v-for="route in permissionRoutes">
         <a-menu-item v-if="!route.children && !route.meta.hidden" :key="route.key">
           <a-icon :type="route.icon" />
           <span>{{ route.title }}</span>
@@ -31,7 +31,6 @@
 <script>
 import { mapState } from 'vuex'
 import appConfig from '@/app.config'
-import constantRouterMap  from '@/router/routes'
 import SidebarItem from './SidebarItem'
 
 export default {
@@ -41,24 +40,20 @@ export default {
   data() {
     return {
       collapsed: false,
-      routes: [],
       theme: 'dark',
       config: appConfig
     }
   },
   computed: {
     ...mapState({
-      sidebarCollapsed: state => state.app.sidebarCollapsed
+      sidebarCollapsed: state => state.app.sidebarCollapsed,
+      permissionRoutes: state => state.routePermission.routes
     }),
     bindClass() {
       return {
         themeWhite: this.theme === 'white'
       }
     }
-  },
-  mounted() {
-    console.log(constantRouterMap)
-    this.routes = constantRouterMap
   },
   methods: {
     toggleCollapsed () {
