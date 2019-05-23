@@ -13,7 +13,7 @@
 import { mapState } from 'vuex'
 import AppMain from './components/AppMain'
 import Sidebar from './components/Sidebar'
-import Navbar from './components/HeaderNav/Navbar'
+import Navbar from './components/HeaderNav'
 
 export default {
   components: {
