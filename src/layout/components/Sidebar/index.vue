@@ -18,7 +18,7 @@
         mode="inline"
       >
       <template v-for="route in routes">
-        <a-menu-item v-if="!route.children" :key="route.key">
+        <a-menu-item v-if="!route.children && !route.meta.hidden" :key="route.key">
           <a-icon :type="route.icon" />
           <span>{{ route.title }}</span>
         </a-menu-item>
@@ -31,7 +31,7 @@
 <script>
 import { mapState } from 'vuex'
 import appConfig from '@/app.config'
-import { constantRouterMap } from '@/router'
+import constantRouterMap  from '@/router/routes'
 import SidebarItem from './SidebarItem'
 
 export default {

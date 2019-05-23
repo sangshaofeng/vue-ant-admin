@@ -13,7 +13,7 @@
 import { mapState } from 'vuex'
 import AppMain from './components/AppMain'
 import Sidebar from './components/Sidebar'
-import Navbar from './components/Navbar'
+import Navbar from './components/HeaderNav/Navbar'
 
 export default {
   components: {
@@ -35,7 +35,9 @@ export default {
 
 <style lang="less" scoped>
 .right-body {
-  min-width: 990px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  min-width: 500px;
   transition: all .2s;
 }
 .marginLeft200 {

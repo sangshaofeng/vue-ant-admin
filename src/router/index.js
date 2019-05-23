@@ -2,42 +2,18 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import Layout from '@/layout'
-import userCenter from "./modules/userCenter"
+import routes from './routes'
 
 Vue.use(Router)
 
-export const constantRouterMap = [
-  {
-    path: '/',
-    component: Layout,
-    redirect: '/dashboard',
-    name: "dashboard",
-    meta: {
-      title: "Dashboard",
-      icon: 'pie-chart',
-      hidden: false
-    },
-    children: [
-      {
-        path: 'dashboard',
-        component: () => import('@/pages/dashboard/index'),
-        name: "dashboard",
-        meta: {
-          title: "Dashboard",
-          roles: [""],
-        }
-      }
-    ]
-  },
-  userCenter,
-]
+// 关闭spinner
+NProgress.configure({ showSpinner: false })
 
 const router = new Router({
   mode: 'history',
   base: '/',
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRouterMap
+  routes: routes
 })
 
 router.beforeEach((to, from, next) => {
