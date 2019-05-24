@@ -18,9 +18,12 @@ const router = new Router({
   routes: routes
 })
 
+// 路由白名单，所有人均可访问
+const routeWhiteList = ["/login"]
+
 router.beforeEach(async(to, from, next) => {
   NProgress.start()
-  const sessionId = cookie.get('SESSIONID') ? cookie.get('SESSIONID') : ''
+  const sessionId = cookie.get('SESSIONID')
   if (sessionId) {
     if (to.path === '/login') {
       next({ path: '/' })
@@ -31,19 +34,23 @@ router.beforeEach(async(to, from, next) => {
         next()
       } else {
         try {
+          // dispatch返回一个Promise, 由于是异步的，所以使用await
           const { roles } = await store.dispatch('setUserInfo')
-          const permissionRoutes = await store.dispatch('generateRoutes', roles)
-          router.addRoutes(permissionRoutes)
+          const accessRoutes = await store.dispatch('generateRoutes', roles)
+          router.addRoutes(accessRoutes)
           next({ ...to, replace: true })
-        } catch(error) {
+        } catch (error) {
           next(`/login?redirect=${to.path}`)
           NProgress.done()
         }
       }
     }
   } else {
-    next(`/login?redirect=${to.path}`)
-    NProgress.done()
+    if (routeWhiteList.indexOf(to.path) !== -1) next()
+    else {
+      next(`/login?redirect=${to.path}`)
+      NProgress.done()
+    }
   }
 })
 

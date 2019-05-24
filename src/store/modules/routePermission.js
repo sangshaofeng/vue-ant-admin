@@ -44,11 +44,9 @@ const routePermission = {
   },
   actions: {
     generateRoutes({ commit }, roles) {
-      return new Promise(resolve => {
-        let accessedRoutes = filterPermissionRoutes(constantRouterMap, roles)
-        commit('SET_ROUTES', accessedRoutes)
-        resolve(accessedRoutes)
-      })
+      let accessedRoutes = filterPermissionRoutes(constantRouterMap, roles)
+      commit('SET_ROUTES', accessedRoutes)
+      return accessedRoutes
     }
   }
 }
