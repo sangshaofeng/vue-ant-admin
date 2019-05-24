@@ -8,14 +8,14 @@
     </a>
     <a-menu slot="overlay">
       <a-menu-item>
-        <a href="javascript:;">1st menu item</a>
+        <a href="javascript:;" style="font-size:13px;">首页</a>
       </a-menu-item>
       <a-menu-item>
-        <a href="javascript:;">2nd menu item</a>
+        <a href="javascript:;" style="font-size:13px;">我的关注</a>
       </a-menu-item>
       <a-menu-divider />
-      <a-menu-item>
-        <a href="javascript:;">3rd menu item</a>
+      <a-menu-item @click="logout">
+        <a href="javascript:;" style="font-size:13px;">登出账户</a>
       </a-menu-item>
     </a-menu>
   </a-dropdown>
@@ -23,6 +23,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import cookie from 'js-cookie'
 
 export default {
   computed: {
@@ -34,6 +35,12 @@ export default {
   created() {
     console.log(this.username)
   },
+  methods: {
+    logout() {
+      cookie.remove('SESSIONID')
+      this.$router.push({ path: '/login' })
+    }
+  }
 }
 </script>
 
@@ -46,7 +53,7 @@ export default {
   height: 100%;
   color: #808080;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 13px;
   .avatar {
     display: inline-block;
     margin: 0 8px 0 10px;
