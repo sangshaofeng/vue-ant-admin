@@ -1,19 +1,29 @@
 <template>
   <a-layout-header style="background: #fff; padding: 0">
     <div class="header-wrapper">
-      <a-icon
-        class="trigger"
-        :type="sidebarCollapsed ? 'menu-unfold' : 'menu-fold'"
-        @click="toggleSidebarCollapsed"
-      />
+      <div class="menu-left">
+        <a-icon
+          class="trigger"
+          :type="sidebarCollapsed ? 'menu-unfold' : 'menu-fold'"
+          @click="toggleSidebarCollapsed"
+        />
+      </div>
+
+      <div class="menu-right">
+        <UserMenu></UserMenu>
+      </div>
     </div>
   </a-layout-header>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import UserMenu from './UserMenu'
 
 export default {
+  components: {
+    UserMenu
+  },
   data() {
     return {
      collapsed: false,
@@ -41,6 +51,10 @@ export default {
     width: 100%;
     text-align: left;
     padding: 0 20px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 .trigger {
