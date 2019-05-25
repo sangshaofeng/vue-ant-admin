@@ -1,10 +1,13 @@
 <template>
-  <a-layout class="layout-container" style="min-height: 100vh">
+  <a-layout 
+    class="layout-container" 
+    :class="{ 'sidebar-collapsed': sidebarCollapsed }" 
+    style="min-height: 100vh">
     <sidebar></sidebar>
     <a-layout class="right-body"
       :class="bindClass">
-      <navbar></navbar>
-      <app-main></app-main>
+      <navbar :class="{'fixed-header': fixedHeader}"></navbar>
+      <app-main class="app-main-container"></app-main>
     </a-layout>
   </a-layout>
 </template>
@@ -14,10 +17,20 @@ import { mapState } from 'vuex'
 import AppMain from './components/AppMain'
 import Sidebar from './components/Sidebar'
 import Navbar from './components/HeaderNav'
+import appConfig from '@/app.config'
 
 export default {
   components: {
     AppMain, Sidebar, Navbar
+  },
+  data () {
+    return {
+      fixedHeader: appConfig.fixedHeader
+    }
+  },
+  mounted () {
+    console.log(appConfig)
+    console.log(this.fixedHeader)
   },
   computed: {
     ...mapState({
@@ -45,5 +58,21 @@ export default {
 }
 .marginLeft80 {
   margin-left: 80px;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  width: calc(100% - 200px);
+  transition: width 0.2s;
+}
+
+.sidebar-collapsed .fixed-header {
+  width: calc(100% - 80px);
+}
+.fixed-header + .app-main-container {
+  margin-top: 70px;
 }
 </style>

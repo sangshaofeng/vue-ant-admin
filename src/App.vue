@@ -19,4 +19,17 @@ export default {
 #app {
   text-align: center;
 }
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #eee;
+}
+body::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgb(189, 189, 189); 
+}
 </style>

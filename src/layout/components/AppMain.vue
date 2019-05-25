@@ -1,5 +1,5 @@
 <template>
-  <a-layout-content :style="{ margin: '20px', minHeight: '280px' }">
+  <a-layout-content class="content-container">
     <transition name="fade-transform" mode="out-in">
       <keep-alive>
         <router-view />
@@ -17,7 +17,10 @@ export default {
 <style lang="less" scoped>
 .ant-layout-content {
   background: transparent !important;
+  margin: 20px;
+  min-height: 280px;
 }
+
 /* fade-transform */
 .fade-transform-leave-active,
 .fade-transform-enter-active {
