@@ -24,11 +24,16 @@
       mode="inline"
     >
       <template v-for="route in permissionRoutes">
-        <a-menu-item v-if="!route.children && !route.meta.hidden" :key="route.key">
-          <a-icon :type="route.icon" />
-          <span>{{ route.title }}</span>
+        <a-menu-item v-if="!route.children && !route.meta.hidden" :key="route.name">
+          <a-icon :type="route.meta.icon" />
+          <span>{{ route.meta.title }}</span>
         </a-menu-item>
-        <sidebar-item v-else :menu-info="route" :key="route.key"/>
+        <sidebar-item 
+          v-else 
+          :item="route" 
+          :base-path="route.path" 
+          :key="route.name"
+        />
       </template>
     </a-menu>
   </a-layout-sider>
@@ -51,6 +56,9 @@ export default {
       title: '管理系统',
       logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
     }
+  },
+  mounted() {
+    console.log(this.permissionRoutes)
   },
   computed: {
     ...mapState({

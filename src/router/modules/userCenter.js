@@ -3,14 +3,15 @@ import Layout from '@/layout'
 const  userCenterRoutes = {
   path: '/userCenter',
   component: Layout,
-  name: '',
+  // redirect: '/userCenter/basicInfo',
+  name: 'UserCenter',
   meta: {
     title: '用户中心',
     icon: 'user',
   },
   children: [
     {
-      path: '/basicInfo',
+      path: 'basicInfo',
       name: 'BasicInfo',
       component: () => import('@/pages/userCenter/BasicInfo'),
       meta: { 
@@ -19,7 +20,7 @@ const  userCenterRoutes = {
       },
     },
     {
-      path: '/changePassword',
+      path: 'changePassword',
       name: 'ChangePassword',
       component: () => import('@/pages/userCenter/ChangePassword'),
       meta: { 
