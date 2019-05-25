@@ -32,9 +32,6 @@ export default {
       'avatar'
     ])
   },
-  created() {
-    console.log(this.username)
-  },
   methods: {
     logout() {
       cookie.remove('SESSIONID')
