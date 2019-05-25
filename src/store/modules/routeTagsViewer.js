@@ -6,6 +6,7 @@ const routeTagsViewer = {
     ADD_VISITED_ROUTE: (state, route) => {
       const isRouteExist = state.visitedRoutes.some(r => r.path === route.path)
       if (isRouteExist) return
+      if (route.meta.hidden) return
       state.visitedRoutes.push(
         Object.assign({}, route, { title: route.meta.title || '未命名路由' })
       )
