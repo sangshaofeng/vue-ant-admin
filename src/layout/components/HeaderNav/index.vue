@@ -8,25 +8,28 @@
           @click="toggleSidebarCollapsed"
         />
       </div>
-
       <div class="menu-right">
         <UserMenu></UserMenu>
       </div>
     </div>
+    <RouteTagsViewer v-if="showRouteTagsViewer"></RouteTagsViewer>
   </a-layout-header>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import UserMenu from './UserMenu'
+import RouteTagsViewer from './RouteTagsViewer'
+import appConfig from '@/app.config'
 
 export default {
   components: {
-    UserMenu
+    UserMenu, RouteTagsViewer
   },
   data() {
     return {
      collapsed: false,
+     showRouteTagsViewer: appConfig.showRouteTagsViewer
     }
   },
   computed: {

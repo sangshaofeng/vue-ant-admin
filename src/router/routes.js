@@ -18,6 +18,8 @@ const constantRouterMap = [
         component: () => import('@/pages/dashboard/index'),
         name: "dashboard",
         meta: {
+          keepAlive: true,
+          affix: true,
           title: "Dashboard",
           roles: ["dashboard"],
         }

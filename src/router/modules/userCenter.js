@@ -14,7 +14,8 @@ const  userCenterRoutes = {
       path: 'basicInfo',
       name: 'BasicInfo',
       component: () => import('@/pages/userCenter/BasicInfo'),
-      meta: { 
+      meta: {
+        keepAlive: true,
         title: '基本信息',
         roles: ["user_basic_info"]
       },
@@ -23,7 +24,8 @@ const  userCenterRoutes = {
       path: 'changePassword',
       name: 'ChangePassword',
       component: () => import('@/pages/userCenter/ChangePassword'),
-      meta: { 
+      meta: {
+        keepAlive: true, 
         title: '修改密码',
         roles: ["change_password"]
       }

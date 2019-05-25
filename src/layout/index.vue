@@ -6,7 +6,7 @@
     <sidebar></sidebar>
     <a-layout class="right-body"
       :class="bindClass">
-      <navbar :class="{'fixed-header': fixedHeader}"></navbar>
+      <navbar :class="{'fixed-header': fixedHeader, 'show-route-tags-viewer': showRouteTagsViewer }"></navbar>
       <app-main class="app-main-container"></app-main>
     </a-layout>
   </a-layout>
@@ -25,12 +25,9 @@ export default {
   },
   data () {
     return {
-      fixedHeader: appConfig.fixedHeader
+      fixedHeader: appConfig.fixedHeader,
+      showRouteTagsViewer: appConfig.showRouteTagsViewer
     }
-  },
-  mounted () {
-    console.log(appConfig)
-    console.log(this.fixedHeader)
   },
   computed: {
     ...mapState({
@@ -69,10 +66,17 @@ export default {
   transition: width 0.2s;
 }
 
+.show-route-tags-viewer + .app-main-container {
+  margin-top: 58px;
+}
+
 .sidebar-collapsed .fixed-header {
   width: calc(100% - 80px);
 }
 .fixed-header + .app-main-container {
   margin-top: 70px;
+}
+.fixed-header.show-route-tags-viewer + .app-main-container {
+  margin-top: 108px;
 }
 </style>
