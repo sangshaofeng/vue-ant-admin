@@ -22,10 +22,14 @@
     <a-menu
       :theme="theme"
       mode="inline"
-      :selectedKeys="isActive"
+      :selectedKeys="[selectedKeys]"
+      @click="toggleMenuActive"
     >
       <template v-for="route in permissionRoutes">
-        <a-menu-item v-if="!route.children && !route.meta.hidden" :key="route.name">
+        <a-menu-item
+          v-if="hasOneChild(route) && !route.meta.hidden"
+          :key="route.name"
+          @click="toPath(route.path)">
           <a-icon :type="route.meta.icon" />
           <span>{{ route.meta.title }}</span>
         </a-menu-item>
@@ -33,7 +37,7 @@
           v-else
           :item="route"
           :base-path="route.path"
-          :key="route.path"
+          :key="route.name"
         />
       </template>
     </a-menu>
@@ -41,6 +45,7 @@
 </template>
 
 <script>
+import path from 'path'
 import { mapState } from 'vuex'
 import appConfig from '@/app.config'
 import SidebarItem from './SidebarItem'
@@ -51,11 +56,20 @@ export default {
   },
   data() {
     return {
+      selectedKeys: '/dashboard',
       collapsed: false,
       theme: 'dark',
       config: appConfig,
       title: '管理系统',
       logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
+    }
+  },
+  mounted() {
+    this.selectedKeys = this.$route.name
+  },
+  watch: {
+    $route() {
+      this.selectedKeys = this.$route.name
     }
   },
   computed: {
@@ -68,20 +82,31 @@ export default {
         themeWhite: this.theme === 'white'
       }
     },
-    isOpen() {
-      const pathArr = []
-      const { path } = this.$route
-      pathArr.push(path)
-      return `"${pathArr}"`
-    },
     isActive() {
       return this.$route.path
     }
   },
   methods: {
+    hasOneChild(route) {
+      if (route.children) {
+        if (route.children.length <= 1) {
+          return true
+        }
+      }
+    },
     toggleCollapsed () {
       this.collapsed = !this.collapsed
     },
+    toggleMenuActive(e) {
+      this.selectedKeys = e.key
+    },
+    toPath(path) {
+      let completePath = this.resolvePath(path)
+      this.$router.push({path: completePath})
+    },
+    resolvePath(routePath) {
+      return path.resolve(this.basePath, routePath)
+    }
   },
 }
 </script>

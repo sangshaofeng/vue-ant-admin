@@ -6,7 +6,7 @@ const constantRouterMap = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    name: "dashboard",
+    name: "Dashboard",
     meta: {
       title: "Dashboard",
       icon: 'pie-chart',
@@ -16,7 +16,7 @@ const constantRouterMap = [
       {
         path: 'dashboard',
         component: () => import('@/pages/dashboard/index'),
-        name: "dashboard",
+        name: "Dashboard",
         meta: {
           keepAlive: true,
           affix: true,

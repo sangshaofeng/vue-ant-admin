@@ -1,6 +1,6 @@
 <template>
   <a-sub-menu
-    :key="item.path"
+    :key="item.name"
     v-bind="$props"
     v-on="$listeners"
     v-if="!item.meta.hidden"
@@ -11,7 +11,7 @@
     <template v-for="item in item.children">
         <a-menu-item
           v-if="!item.children"
-          :key="item.path"
+          :key="item.name"
           @click="toPath(item.path)"
         >
           <a-icon :type="item.meta.icon" />
@@ -19,7 +19,7 @@
         </a-menu-item>
         <sub-menu
           v-else
-          :key="item.path"
+          :key="item.name"
           :menu-info="item"
         />
     </template>
