@@ -8,6 +8,7 @@
       :class="bindClass">
       <navbar :class="{'fixed-header': fixedHeader, 'show-route-tags-viewer': showRouteTagsViewer }"></navbar>
       <app-main class="app-main-container"></app-main>
+      <footer-bar></footer-bar>
     </a-layout>
   </a-layout>
 </template>
@@ -17,11 +18,12 @@ import { mapState } from 'vuex'
 import AppMain from './components/AppMain'
 import Sidebar from './components/Sidebar'
 import Navbar from './components/HeaderNav'
+import FooterBar from './components/Footer'
 import appConfig from '@/app.config'
 
 export default {
   components: {
-    AppMain, Sidebar, Navbar
+    AppMain, Sidebar, Navbar, FooterBar
   },
   data () {
     return {

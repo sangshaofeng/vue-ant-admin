@@ -20,7 +20,16 @@ export default {
 
 <style>
 #app {
-  text-align: center;
+  text-align: left;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
 }
 body::-webkit-scrollbar {
   width: 8px;

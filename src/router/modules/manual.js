@@ -3,7 +3,7 @@ import Layout from '@/layout'
 const manualRoutes = {
   path: '/manual',
   component: Layout,
-  // redirect: '/manual/introduce',
+  redirect: '/manual/introduce',
   name: 'Manual',
   meta: {
     title: '使用手册',

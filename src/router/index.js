@@ -37,7 +37,6 @@ router.beforeEach(async(to, from, next) => {
           // dispatch返回一个Promise, 由于是异步的，所以使用await
           const { roles } = await store.dispatch('setUserInfo')
           const accessRoutes = await store.dispatch('generateRoutes', roles)
-          console.log(accessRoutes)
           router.addRoutes(accessRoutes)
           next({ ...to, replace: true })
         } catch (error) {
