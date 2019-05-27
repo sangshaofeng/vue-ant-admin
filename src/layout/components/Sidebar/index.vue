@@ -56,6 +56,7 @@ export default {
   },
   data() {
     return {
+      openKeys: '',
       selectedKeys: '/dashboard',
       collapsed: false,
       theme: 'dark',

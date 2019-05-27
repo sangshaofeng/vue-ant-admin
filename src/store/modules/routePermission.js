@@ -44,7 +44,12 @@ const routePermission = {
   },
   actions: {
     generateRoutes({ commit }, roles) {
-      let accessedRoutes = filterPermissionRoutes(constantRouterMap, roles)
+      let accessedRoutes
+      if (roles.includes('admin')) {
+        accessedRoutes = constantRouterMap || []
+      } else {
+        accessedRoutes = filterPermissionRoutes(constantRouterMap, roles)
+      }
       commit('SET_ROUTES', accessedRoutes)
       return accessedRoutes
     }

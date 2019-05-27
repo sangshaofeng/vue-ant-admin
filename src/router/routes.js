@@ -1,5 +1,5 @@
 import Layout from '@/layout'
-import userCenter from "./modules/userCenter"
+import manualRoutes from './modules/manual'
 
 const constantRouterMap = [
   {
@@ -45,7 +45,7 @@ const constantRouterMap = [
     }
   },
   // 路由模块
-  userCenter,
+  manualRoutes,
   {
     path: '*',
     name: "all",
