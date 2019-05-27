@@ -22,17 +22,18 @@
     <a-menu
       :theme="theme"
       mode="inline"
+      :selectedKeys="isActive"
     >
       <template v-for="route in permissionRoutes">
         <a-menu-item v-if="!route.children && !route.meta.hidden" :key="route.name">
           <a-icon :type="route.meta.icon" />
           <span>{{ route.meta.title }}</span>
         </a-menu-item>
-        <sidebar-item 
-          v-else 
-          :item="route" 
-          :base-path="route.path" 
-          :key="route.name"
+        <sidebar-item
+          v-else
+          :item="route"
+          :base-path="route.path"
+          :key="route.path"
         />
       </template>
     </a-menu>
@@ -66,6 +67,15 @@ export default {
       return {
         themeWhite: this.theme === 'white'
       }
+    },
+    isOpen() {
+      const pathArr = []
+      const { path } = this.$route
+      pathArr.push(path)
+      return `"${pathArr}"`
+    },
+    isActive() {
+      return this.$route.path
     }
   },
   methods: {
