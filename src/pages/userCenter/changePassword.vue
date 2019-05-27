@@ -1,12 +1,12 @@
 <template>
   <div>
-    修改密码页面
+    CHnage Password Works!
   </div>
 </template>
 
 <script>
   export default {
-    
+
   }
 </script>
 
