@@ -1,0 +1,47 @@
+#app {
+  text-align: left;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #eee;
+}
+body::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgb(189, 189, 189);
+}
+
+/* 内容区样式 */
+.content-wrapper {
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+  }
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0 0 10px;
+  }
+  .para {
+    font-size: 13px;
+    margin-bottom: 20px;
+    .bold {
+      font-weight: bold;
+    }
+    code {
+      display: block;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      background: #f5f7fa;
+      color: #a0a0a0;
+      border-radius: 5px;
+    }
+  }
+}
