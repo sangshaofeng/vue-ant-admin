@@ -8,13 +8,10 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  }
+  components: {}
 }
 </script>
 
@@ -42,6 +39,6 @@ body::-webkit-scrollbar-track {
 }
 body::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: rgb(189, 189, 189); 
+  background-color: rgb(189, 189, 189);
 }
 </style>
