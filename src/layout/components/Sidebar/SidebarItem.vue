@@ -3,24 +3,24 @@
     :key="item.name"
     v-bind="$props"
     v-on="$listeners"
-    v-if="!item.meta.hidden"
+    v-if="!item.meta.hidden && item.children"
   >
     <span slot="title">
       <a-icon :type="item.meta.icon" /><span>{{ item.meta.title }}</span>
     </span>
-    <template v-for="item in item.children">
+    <template v-for="child in item.children" v-if="!child.meta.hidden">
         <a-menu-item
-          v-if="!item.children"
-          :key="item.name"
-          @click="toPath(item.path)"
+          v-if="!child.children"
+          :key="child.name"
+          @click="toPath(child.path)"
         >
-          <a-icon :type="item.meta.icon" />
-          <span>{{ item.meta.title }}</span>
+          <a-icon :type="child.meta.icon" />
+          <span>{{ child.meta.title }}</span>
         </a-menu-item>
         <sub-menu
           v-else
-          :key="item.name"
-          :menu-info="item"
+          :key="child.name"
+          :menu-info="child"
         />
     </template>
   </a-sub-menu>
@@ -43,6 +43,9 @@ export default {
       type: String,
       default: ''
     },
+  },
+  mounted() {
+    console.log(this.item)
   },
   methods: {
     toPath(path) {
