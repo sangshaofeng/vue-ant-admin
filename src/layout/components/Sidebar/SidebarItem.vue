@@ -44,9 +44,6 @@ export default {
       default: ''
     },
   },
-  mounted() {
-    console.log(this.item)
-  },
   methods: {
     toPath(path) {
       let completePath = this.resolvePath(path)
