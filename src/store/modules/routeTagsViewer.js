@@ -50,8 +50,6 @@ const routeTagsViewer = {
     addView({ dispatch }, view) {
       dispatch('addVisitedRoute', view)
       dispatch('addCachedView', view)
-      console.log(state.cachedViews)
-      console.log(state.visitedRoutes)
     },
 
     addVisitedRoute(ctx, route) {
@@ -66,8 +64,6 @@ const routeTagsViewer = {
       return new Promise(resolve => {
         dispatch('removeVisitedRoute', view)
         dispatch('removeCachedView', view)
-        console.log(state.cachedViews)
-        console.log(state.visitedRoutes)
         resolve({
           visitedRoutes: [...state.visitedRoutes],
           cachedViews: [...state.cachedViews]
@@ -78,14 +74,14 @@ const routeTagsViewer = {
     removeVisitedRoute(ctx, route) {
       return new Promise(resolve => {
         ctx.commit('REMOVE_VISITED_ROUTE', route)
-        resolve([...state.visitedRoutes])
+        resolve([...ctx.state.visitedRoutes])
       })
     },
 
     removeCachedView(ctx, view) {
       return new Promise(resolve => {
         ctx.commit('REMOVE_CACHED_VIEW', view)
-        resolve([...state.cachedViews])
+        resolve([...ctx.state.cachedViews])
       })
     },
 
