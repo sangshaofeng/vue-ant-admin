@@ -4,7 +4,8 @@ const getters = {
   avatar: state => state.user.avatar,
   sidebarCollapsed: state => state.app.sidebarCollapsed,
   permissionRoutes: state => state.routePermission.routes,
-  visitedRoutes: state => state.routeTagsViewer.visitedRoutes
+  visitedRoutes: state => state.routeTagsViewer.visitedRoutes,
+  cachedViews: state => state.routeTagsViewer.cachedViews
 }
 
 export default getters
