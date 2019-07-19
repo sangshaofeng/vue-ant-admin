@@ -50,12 +50,12 @@ export default {
     },
     addTag() {
       if (this.$route.name) {
-        this.$store.dispatch('addVisitedRoute', this.$route)
+        this.$store.dispatch('addView', this.$route)
       }
       return false
     },
     removeTag(route) {
-      this.$store.dispatch('removeVisitedRoute', route).then(() => {
+      this.$store.dispatch('removeView', route).then(() => {
         if (this.isActive(route)) {
           this.toLastRoute(this.visitedRoutes, route)
         }

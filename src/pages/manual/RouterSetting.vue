@@ -1,12 +1,12 @@
 <template>
   <div>
-    路由使用页面
+    <a-input placeholder="Basic usage"/>
   </div>
 </template>
 
 <script>
 export default {
-  
+  name: 'RouterSetting'
 }
 </script>
 

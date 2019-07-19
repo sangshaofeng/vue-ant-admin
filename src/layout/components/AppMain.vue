@@ -1,7 +1,7 @@
 <template>
   <a-layout-content class="content-container">
     <transition name="fade-transform" mode="out-in">
-      <keep-alive>
+      <keep-alive :include="cachedViews">
         <router-view v-if="$route.meta.keepAlive" :key="key"/>
       </keep-alive>
     </transition>
@@ -13,6 +13,9 @@
 export default {
   name: 'AppMain',
   computed: {
+    cachedViews() {
+      return this.$store.state.routeTagsViewer.cachedViews
+    },
     key() {
       return this.$route.fullPath
     }
