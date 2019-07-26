@@ -8,7 +8,8 @@
     <span slot="title">
       <a-icon :type="item.meta.icon" /><span>{{ item.meta.title }}</span>
     </span>
-    <template v-for="child in item.children" v-if="!child.meta.hidden">
+    <template v-for="child in item.children">
+      <template v-if="!child.meta.hidden">
         <a-menu-item
           v-if="!child.children"
           :key="child.name"
@@ -22,6 +23,7 @@
           :key="child.name"
           :menu-info="child"
         />
+      </template>
     </template>
   </a-sub-menu>
 </template>
